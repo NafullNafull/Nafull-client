@@ -6,11 +6,13 @@ import FixedFooter from '../components/FixedFooter';
 import CTAButton from '../components/CTAButton';
 import { wellWishApi } from '../api';
 import Navigation from '../components/Navigation';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -18,6 +20,7 @@ const RegisterPage: React.FC = () => {
       await wellWishApi.receive({
         discordId: input,
       });
+      navigate('/register/verify');
     } catch (e) {
       console.error(e);
       setErrorMessage('메시지 전송에 실패했습니다. 다시 시도해주세요.');
