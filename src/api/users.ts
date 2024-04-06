@@ -20,6 +20,7 @@ export interface RegisterRequestBody {
   letterId: string;
   rawPassword: string;
   personalInformationAgreement: boolean;
+  nickname: string;
 }
 
 export const register = async (body: RegisterRequestBody): Promise<UserData> => {

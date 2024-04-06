@@ -35,6 +35,7 @@ const RegisterFormPage: React.FC = () => {
         rawPassword: input.password,
         personalInformationAgreement: true,
         letterId: letterId,
+        nickname: input.nickname,
       });
       navigate('/login');
     } catch (e) {
