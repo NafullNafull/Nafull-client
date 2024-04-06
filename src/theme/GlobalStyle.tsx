@@ -23,6 +23,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.color.gray_900};
     line-height: 1.5;
   }
+  *:focus-visible {
+    outline: none;
+  }
 `;
 
 export type FontFamilyVariants = 'PretendardVariable' | 'SansitaOne';
