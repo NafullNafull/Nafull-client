@@ -1,9 +1,11 @@
+import CheckBox from '../components/CheckBox';
 import TextField, { ValidationResult } from '../components/TextField';
 import { Body1, Title1, Title2 } from '../components/Typography';
 import React, { useState } from 'react';
 
 const PlaygroundPage: React.FC = () => {
   const [input, setInput] = useState('');
+  const [checked, setChecked] = useState(false);
   const inputValidator = (value: string): ValidationResult =>
     !value ? { isValid: false, error: '필수값입니다.' } : { isValid: true };
 
@@ -23,6 +25,7 @@ const PlaygroundPage: React.FC = () => {
         description="description"
         placeholder="placeholder"
       />
+      <CheckBox name="랜덤" label="랜덤" checked={checked} onChange={(e) => setChecked(e.target.checked)} />
     </div>
   );
 };
