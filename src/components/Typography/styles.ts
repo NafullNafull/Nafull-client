@@ -10,6 +10,11 @@ const Title2 = css`
   font-weight: 600;
   line-height: 1.4;
 `;
+const Title3 = css`
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.4;
+`;
 const Subtitle1 = css`
   font-size: 20px;
   font-weight: 600;
@@ -43,6 +48,7 @@ const Body3 = css`
 const styles = {
   Title1,
   Title2,
+  Title3,
   Subtitle1,
   Subtitle2,
   Subtitle3,
