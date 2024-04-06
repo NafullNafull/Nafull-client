@@ -7,6 +7,8 @@ import CTAButton from '../components/CTAButton';
 import Navigation from '../components/Navigation';
 import { useNavigate } from 'react-router-dom';
 import { letterApi } from '../api';
+import Logo from '../components/Logo';
+import MainLogo from '../components/Logo';
 
 const RegisterPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -31,6 +33,7 @@ const RegisterPage: React.FC = () => {
   return (
     <div>
       <Navigation />
+      <MainLogo />
       <StyledRegisterForm>
         <TextField
           value={input}

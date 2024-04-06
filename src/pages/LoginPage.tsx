@@ -6,6 +6,7 @@ import requiredValidator from '../utils/requiredValidator';
 import { userApi } from '../api';
 import FixedFooter from '../components/FixedFooter';
 import Navigation from '../components/Navigation';
+import MainLogo from '../components/Logo';
 
 const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ const LoginPage: React.FC = () => {
   return (
     <div>
       <Navigation />
+      <MainLogo />
       <StyledLoginForm>
         <TextField
           value={input.discordId}
