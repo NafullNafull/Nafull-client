@@ -1,3 +1,4 @@
+import { userApi } from '../api';
 import CheckBox from '../components/CheckBox';
 import Modal from '../components/Modal';
 import TextField, { ValidationResult } from '../components/TextField';
@@ -8,8 +9,18 @@ const PlaygroundPage: React.FC = () => {
   const [input, setInput] = useState('');
   const [checked, setChecked] = useState(false);
   const [modal, setModal] = useState(false);
+
   const inputValidator = (value: string): ValidationResult =>
     !value ? { isValid: false, error: '필수값입니다.' } : { isValid: true };
+
+  const getUser = async () => {
+    try {
+      const user = await userApi.get(input);
+      console.log(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -33,6 +44,7 @@ const PlaygroundPage: React.FC = () => {
         <Subtitle3 color="gray_400">날개짓 2회가 사용돼요.</Subtitle3>
       </Modal>
       <button onClick={() => setModal(true)}>Open modal</button>
+      <button onClick={getUser}>Call GET user api</button>
     </div>
   );
 };
