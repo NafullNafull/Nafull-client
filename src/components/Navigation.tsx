@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import WingInfo from './WingInfo';
 
 type Props = {
-  isLoggedIn?: boolean;
   keyCount?: number;
 };
 
-const Navigation = ({ isLoggedIn = false, keyCount }: Props) => {
+const Navigation = ({ keyCount }: Props) => {
   const navigate = useNavigate();
 
   const goPreviousPage = () => {
@@ -18,7 +17,7 @@ const Navigation = ({ isLoggedIn = false, keyCount }: Props) => {
   return (
     <StyledNav>
       <StyledIcon icon="leftChevron" color="gray_900" width={20} height={30} onClick={goPreviousPage} />
-      {isLoggedIn && <WingInfo keyCount={keyCount || 0} />}
+      {keyCount && <WingInfo keyCount={keyCount || 0} />}
     </StyledNav>
   );
 };
