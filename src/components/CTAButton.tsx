@@ -16,7 +16,7 @@ const CTAButton = ({ variant = 'primary', children, ...props }: Props) => {
 };
 
 const StyledButton = styled.button<Props>`
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 16px 0;
   width: 100%;
   font-size: 16px;
