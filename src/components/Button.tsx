@@ -8,6 +8,9 @@ const Button = ({ children, ...props }: Props) => {
 };
 
 const StyledButton = styled.button<Props>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 100px;
   padding: 12px 20px;
   font-size: 16px;
