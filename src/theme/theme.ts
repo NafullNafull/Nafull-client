@@ -29,3 +29,6 @@ export const theme = {
     red_300: '#F1304A',
   },
 };
+
+export type ColorAlias = keyof (typeof theme)['color'];
+export const colors = theme.color;
