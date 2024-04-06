@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import CTAButton from '../components/CTAButton';
 import FixedFooter from '../components/FixedFooter';
 import styled, { css } from 'styled-components';
@@ -47,6 +47,7 @@ const LetterPage = () => {
   console.log(imageMap[(data?.badge.toLowerCase() as BadgeType) || 'letter']);
   return (
     <div>
+      {data?.locked && <Navigate replace to="/mypage" />}
       <Navigation />
       <Illustration src={imageMap[(data?.badge as BadgeType) || 'letter']} />
 

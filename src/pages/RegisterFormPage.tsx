@@ -6,13 +6,15 @@ import FixedFooter from '../components/FixedFooter';
 import CTAButton from '../components/CTAButton';
 import { Subtitle1 } from '../components/Typography';
 import { userApi } from '../api';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import useUser from '../utils/useUser';
 
 const RegisterFormPage: React.FC = () => {
+  const { user } = useUser();
+  const navigate = useNavigate();
   const { letterId } = useParams<{ letterId: string }>() as { letterId: string };
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const [input, setInput] = useState<{
     nickname: string;
     password: string;
@@ -68,6 +70,7 @@ const RegisterFormPage: React.FC = () => {
 
   return (
     <div>
+      {user && <Navigate replace to={`/letter/${letterId}`} />}
       <Navigation />
       <StyledTitleWrapper>
         <Subtitle1>
