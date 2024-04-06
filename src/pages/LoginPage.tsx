@@ -47,9 +47,12 @@ const LoginPage: React.FC = () => {
 
       navigate('/');
     } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const error = e as any;
       console.error(e);
       resetUser();
-      setFailMessage('로그인에 실패했습니다.');
+      if (error?.response?.data?.message) setFailMessage(error.response.data.message);
+      else setFailMessage('로그인에 실패했습니다.');
     } finally {
       setLoading(false);
     }

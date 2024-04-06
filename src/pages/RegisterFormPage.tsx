@@ -41,8 +41,11 @@ const RegisterFormPage: React.FC = () => {
       });
       navigate('/login');
     } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const error = e as any;
       console.error(e);
-      window.alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+      if (error?.response?.data?.message) window.alert(error.response.data.message);
+      else window.alert('회원가입에 실패했습니다. 다시 시도해주세요.');
     } finally {
       setLoading(false);
     }
