@@ -44,16 +44,26 @@ const SendPage = () => {
 
     try {
       setIsPosting(true);
-      //   TODO 랜덤처리
-      await letterApi.send([
-        {
-          senderId: user.userId,
-          badge,
-          receiverDiscordId,
-          content,
-          senderNickname: sender,
-        },
-      ]);
+      if (isRandomChecked) {
+        await letterApi.sendRandom([
+          {
+            senderId: user.userId,
+            senderNickname: sender,
+            content,
+            badge,
+          },
+        ]);
+      } else {
+        await letterApi.send([
+          {
+            senderId: user.userId,
+            badge,
+            receiverDiscordId,
+            content,
+            senderNickname: sender,
+          },
+        ]);
+      }
       setIsPosting(false);
       navigate('/send/complete', { state: { receiver: receiverDiscordId, badge } });
     } catch (e) {
@@ -102,8 +112,7 @@ const SendPage = () => {
               />
             </StyledSendForm>
           </LetterPaper>
-          {/* TODO: badge 정보 넘겨주기 */}
-          <Envelope badge="clover" senderValue={sender} onChange={setSender} />
+          <Envelope badge={getRandomBadge()} senderValue={sender} onChange={setSender} />
         </LetterContainer>
 
         <FixedFooter>
@@ -114,6 +123,11 @@ const SendPage = () => {
       </StyledSendContainer>
     </div>
   );
+};
+
+const getRandomBadge = () => {
+  const randomNumber = Math.floor(Math.random() * Object.keys(badges).length);
+  return Object.keys(badges)[randomNumber] as BadgeType;
 };
 
 const StyledSendContainer = styled.div`
