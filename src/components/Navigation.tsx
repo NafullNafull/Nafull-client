@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import Icon from './Icon';
 import { useNavigate } from 'react-router-dom';
+import WingInfo from './WingInfo';
 
 type Props = {
-  isLoggedIn?: boolean;
+  keyCount?: number;
 };
 
-const Navigation = ({ isLoggedIn = false }: Props) => {
+const Navigation = ({ keyCount }: Props) => {
   const navigate = useNavigate();
 
   const goPreviousPage = () => {
@@ -16,7 +17,7 @@ const Navigation = ({ isLoggedIn = false }: Props) => {
   return (
     <StyledNav>
       <StyledIcon icon="leftChevron" color="gray_900" width={20} height={30} onClick={goPreviousPage} />
-      {isLoggedIn && <>{/**TOOD */}</>}
+      {keyCount && <WingInfo keyCount={keyCount || 0} />}
     </StyledNav>
   );
 };
@@ -25,7 +26,7 @@ const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
+  height: 60px;
 `;
 
 const StyledIcon = styled(Icon)`

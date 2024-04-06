@@ -13,8 +13,8 @@ const StyledTag = styled.span`
   font-size: 14px;
   line-height: 1.4;
   font-weight: 600;
-  color: ${({ theme }) => theme.color.gray_0};
-  background-color: ${({ theme }) => theme.color.blue_300};
+  color: ${({ theme }) => theme.color.blue_300};
+  background-color: ${({ theme }) => theme.color.blue_100};
 `;
 
 export default Tag;
