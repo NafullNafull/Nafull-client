@@ -5,6 +5,7 @@ import App from './App';
 import PlaygroundPage from './pages/PlaygroundPage';
 import RegisterPage from './pages/RegisterPage';
 import RegisterFormPage from './pages/RegisterFormPage';
+import RegisterVerfiyPage from './pages/RegisterVerfiyPage';
 
 const routes: RouteObject[] = [
   {
@@ -18,6 +19,10 @@ const routes: RouteObject[] = [
       {
         path: '/register',
         element: <RegisterPage />,
+      },
+      {
+        path: '/register/verify',
+        element: <RegisterVerfiyPage />,
       },
       {
         path: '/register/:letterId',
