@@ -30,6 +30,22 @@ export const send = async (body: SendRequestBody[]): Promise<void> => {
   return response.data;
 };
 
+// send random letter
+export interface SendRandomRequestBody {
+  senderId: string;
+  senderNickname: string;
+  content: string;
+  badge: BadgeType;
+}
+
+export const sendRandom = async (body: SendRandomRequestBody[]) => {
+  const response = await client.post<void, AxiosResponse<void>, { data: SendRandomRequestBody[] }>(
+    '/letters/send/random',
+    { data: body }
+  );
+  return response.data;
+};
+
 // receive letter
 export interface ReceiveRequestBody {
   discordId: string;

@@ -44,16 +44,26 @@ const SendPage = () => {
 
     try {
       setIsPosting(true);
-      //   TODO 랜덤처리
-      await letterApi.send([
-        {
-          senderId: user.userId,
-          badge,
-          receiverDiscordId,
-          content,
-          senderNickname: sender,
-        },
-      ]);
+      if (isRandomChecked) {
+        await letterApi.sendRandom([
+          {
+            senderId: user.userId,
+            senderNickname: sender,
+            content,
+            badge,
+          },
+        ]);
+      } else {
+        await letterApi.send([
+          {
+            senderId: user.userId,
+            badge,
+            receiverDiscordId,
+            content,
+            senderNickname: sender,
+          },
+        ]);
+      }
       setIsPosting(false);
       navigate('/send/complete', { state: { receiver: receiverDiscordId, badge } });
     } catch (e) {
