@@ -11,7 +11,8 @@ const Navigation = ({ keyCount }: Props) => {
   const navigate = useNavigate();
 
   const goPreviousPage = () => {
-    navigate(-1);
+    if (window.history.length > 1) navigate(-1);
+    else navigate('/');
   };
 
   return (
