@@ -32,6 +32,8 @@ export const theme = {
     red_100: '#FEDDE1',
     red_200: '#FCA9B5',
     red_300: '#F1304A',
+
+    white: '#FFFFFF',
   },
 };
 

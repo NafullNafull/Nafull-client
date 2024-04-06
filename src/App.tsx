@@ -4,8 +4,29 @@ import { theme } from './theme/theme';
 import { Outlet } from 'react-router-dom';
 import { MODAL_PORTAL_ID } from './components/ModalPortal';
 import Layout from './components/layout/Layout';
+import { useEffect } from 'react';
+import useUser from './utils/useUser';
+import { userApi } from './api';
 
 function App() {
+  const { user, setUserCookie, resetUser } = useUser();
+
+  useEffect(() => {
+    if (user) {
+      userApi
+        .get(user.discordId)
+        .then((data) => {
+          setUserCookie({
+            discordId: data.discordId,
+            nickname: data.nickname,
+          });
+        })
+        .catch(() => {
+          resetUser();
+        });
+    }
+  }, []);
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

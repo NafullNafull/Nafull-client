@@ -7,8 +7,10 @@ import { userApi } from '../api';
 import FixedFooter from '../components/FixedFooter';
 import Navigation from '../components/Navigation';
 import MainLogo from '../components/Logo';
+import useUser from '../utils/useUser';
 
 const LoginPage: React.FC = () => {
+  const { setUserCookie, resetUser } = useUser();
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState<{
     discordId: string;
@@ -29,12 +31,18 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      await userApi.login({
+      const data = await userApi.login({
         discordId: input.discordId,
         rawPassword: input.password,
       });
+
+      setUserCookie({
+        discordId: data.discordId,
+        nickname: data.nickname,
+      });
     } catch (e) {
       console.error(e);
+      resetUser();
       setFailMessage('로그인에 실패했습니다.');
     } finally {
       setLoading(false);

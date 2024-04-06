@@ -35,6 +35,8 @@ declare module 'styled-components' {
       red_100: string;
       red_200: string;
       red_300: string;
+
+      white: string;
     };
   }
 }
