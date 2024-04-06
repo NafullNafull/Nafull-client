@@ -5,12 +5,14 @@ import client from './client';
 // User model
 export interface UserData {
   userId: string;
-  nickName: string;
   discordId: string;
+  nickname: string;
   receivedLetters: Letter[];
   sentLetters: Letter[];
   totalSpreadCount: number;
-  keyCount: number;
+  wingCount: number;
+  registrationStamp: number;
+  registrationOrder: number;
 }
 
 // register

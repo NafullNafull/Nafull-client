@@ -6,6 +6,6 @@ export interface Statistics {
 }
 
 export const get = async (): Promise<Statistics> => {
-  const response = await client.get<Statistics>('/statistics');
+  const response = await client.get<Statistics>('/statistics/service');
   return response.data;
 };
