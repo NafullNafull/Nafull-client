@@ -7,6 +7,8 @@ import RegisterPage from './pages/RegisterPage';
 import RegisterFormPage from './pages/RegisterFormPage';
 import RegisterVerfiyPage from './pages/RegisterVerfiyPage';
 import MyPage from './pages/MyPage';
+import SendPage from './pages/SendPage';
+import SendCompletePage from './pages/SendCompletePage';
 
 const routes: RouteObject[] = [
   {
@@ -33,6 +35,11 @@ const routes: RouteObject[] = [
         path: '/login',
         element: <LoginPage />,
       },
+      {
+        path: '/send',
+        element: <SendPage />,
+      },
+      { path: '/send/complete', element: <SendCompletePage /> },
       {
         path: '/mypage',
         element: <MyPage />,
