@@ -3,7 +3,7 @@ import client from './client';
 
 // WellWish model
 export interface WellWish {
-  wellWishId: string;
+  letterId: string;
   senderId: string;
   receiverDiscordId: string;
   nickname: string;
@@ -19,7 +19,7 @@ export interface SendRequestBody {
 }
 
 export const send = async (body: SendRequestBody): Promise<void> => {
-  const response = await client.post<void, AxiosResponse<void>, SendRequestBody>('/well-wishes/send', body);
+  const response = await client.post<void, AxiosResponse<void>, SendRequestBody>('/letters/send', body);
   return response.data;
 };
 
@@ -28,18 +28,18 @@ export interface ReceiveRequestBody {
   discordId: string;
 }
 export const receive = async (body: ReceiveRequestBody): Promise<void> => {
-  const response = await client.post<void, AxiosResponse<void>, ReceiveRequestBody>('/well-wishes/receive', body);
+  const response = await client.post<void, AxiosResponse<void>, ReceiveRequestBody>('/letters/receive', body);
   return response.data;
 };
 
 // unlock well wish
-export const unlock = async (wellWishId: string): Promise<void> => {
-  const response = await client.patch<void, AxiosResponse<void>>(`/well-wishes/${wellWishId}/unlock`);
+export const unlock = async (letterId: string): Promise<void> => {
+  const response = await client.patch<void, AxiosResponse<void>>(`/letters/${letterId}/unlock`);
   return response.data;
 };
 
 // get well wish
-export const get = async (wellWishId: string): Promise<WellWish> => {
-  const response = await client.get<WellWish>(`/well-wishes/${wellWishId}`);
+export const get = async (letterId: string): Promise<WellWish> => {
+  const response = await client.get<WellWish>(`/letters/${letterId}`);
   return response.data;
 };

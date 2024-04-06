@@ -6,8 +6,8 @@ import client from './client';
 export interface UserData {
   userId: string;
   discordId: string;
-  receivedWellWishes: WellWish[];
-  sentWellWishes: WellWish[];
+  receivedLetters: WellWish[];
+  sentLetters: WellWish[];
   totalSpreadCount: number;
   keyCount: number;
 }
