@@ -2,6 +2,10 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    layout: {
+      width: number;
+      paddingX: number;
+    };
     color: {
       gray_0: string;
       gray_50: string;

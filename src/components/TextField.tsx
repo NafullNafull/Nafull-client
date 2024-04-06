@@ -64,6 +64,7 @@ const Description = styled(Body3)`
 `;
 const StyledTextField = styled.div`
   input {
+    width: 100%;
     padding: 12px;
     ${styles.Body2};
     border: 1px solid ${({ theme }) => theme.color.gray_200};
