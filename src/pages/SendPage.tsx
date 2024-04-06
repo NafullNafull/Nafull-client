@@ -29,7 +29,7 @@ const SendPage = () => {
     try {
       setIsPosting(true);
       //   TODO 랜덤처리
-      await letterApi.send({ receiverDiscordId: receiver, content, nickname: sender });
+      await letterApi.send({ receiverDiscordId: receiver, content, senderNickname: sender });
       setIsPosting(false);
       navigate('/send/complete', { state: { receiver } });
     } catch (e) {

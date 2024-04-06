@@ -16,9 +16,9 @@ const HomePage: React.FC = () => {
   const naviagte = useNavigate();
 
   useEffect(() => {
-    // statApi.get().then((data) => {
-    //   setStat(data);
-    // });
+    statApi.get().then((data) => {
+      setStat(data);
+    });
   }, []);
 
   const handleClickSend = () => {
@@ -61,13 +61,13 @@ const HomePage: React.FC = () => {
           style={{ whiteSpace: 'pre-wrap', textAlign: 'center', marginBottom: '30px' }}
         >{`차곡차곡 쌓인 따뜻한 마음들을\n나비의 날갯짓에 실어 보내요.`}</Body2>
         <CTAButton onClick={handleClickSend}>나비 효과 동참하기</CTAButton>
-        {/* {user && ( */}
-        <LoginTextButton>
-          <Body1 color="gray_400" onClick={() => naviagte('/login')}>
-            회원이신가요?
-          </Body1>
-        </LoginTextButton>
-        {/* )} */}
+        {user && (
+          <LoginTextButton>
+            <Body1 color="gray_400" onClick={() => naviagte('/login')}>
+              회원이신가요?
+            </Body1>
+          </LoginTextButton>
+        )}
       </FixedFooter>
     </Container>
   );

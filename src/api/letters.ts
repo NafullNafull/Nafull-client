@@ -6,7 +6,7 @@ export interface Letter {
   letterId: string;
   senderId: string;
   receiverDiscordId: string;
-  nickname: string;
+  senderNickname: string;
   content: string;
   locked: boolean;
 }
@@ -14,7 +14,7 @@ export interface Letter {
 // send letter
 export interface SendRequestBody {
   receiverDiscordId: string;
-  nickname: string;
+  senderNickname: string;
   content: string;
 }
 

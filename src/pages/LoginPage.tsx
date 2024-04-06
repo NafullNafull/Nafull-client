@@ -8,8 +8,10 @@ import FixedFooter from '../components/FixedFooter';
 import Navigation from '../components/Navigation';
 import MainLogo from '../components/Logo';
 import useUser from '../utils/useUser';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
   const { setUserCookie, resetUser } = useUser();
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState<{
@@ -38,8 +40,10 @@ const LoginPage: React.FC = () => {
 
       setUserCookie({
         discordId: data.discordId,
-        nickname: data.nickname,
+        nickName: data.nickName,
       });
+
+      navigate('/');
     } catch (e) {
       console.error(e);
       resetUser();

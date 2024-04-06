@@ -6,18 +6,19 @@ import FixedFooter from '../components/FixedFooter';
 import CTAButton from '../components/CTAButton';
 import { Subtitle1 } from '../components/Typography';
 import { userApi } from '../api';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 const RegisterFormPage: React.FC = () => {
   const { letterId } = useParams<{ letterId: string }>() as { letterId: string };
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [input, setInput] = useState<{
-    nickname: string;
+    nickName: string;
     password: string;
     confirmPassword: string;
   }>({
-    nickname: '',
+    nickName: '',
     password: '',
     confirmPassword: '',
   });
@@ -35,6 +36,7 @@ const RegisterFormPage: React.FC = () => {
         personalInformationAgreement: true,
         letterId: letterId,
       });
+      navigate('/login');
     } catch (e) {
       console.error(e);
       window.alert('회원가입에 실패했습니다. 다시 시도해주세요.');
@@ -59,7 +61,7 @@ const RegisterFormPage: React.FC = () => {
 
   const isValid =
     !loading &&
-    requiredValidator(input.nickname).isValid &&
+    requiredValidator(input.nickName).isValid &&
     passwordValidator(input.password).isValid &&
     confirmValidator(input.confirmPassword).isValid;
 
@@ -75,8 +77,8 @@ const RegisterFormPage: React.FC = () => {
       </StyledTitleWrapper>
       <StyledRegisterForm>
         <TextField
-          value={input.nickname}
-          onChange={handleInputChange('nickname')}
+          value={input.nickName}
+          onChange={handleInputChange('nickName')}
           validator={requiredValidator}
           label="닉네임"
           placeholder="기본 닉네임을 설정해주세요"

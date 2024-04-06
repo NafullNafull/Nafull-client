@@ -6,7 +6,7 @@ import PlaygroundPage from './pages/PlaygroundPage';
 import RegisterPage from './pages/RegisterPage';
 import RegisterFormPage from './pages/RegisterFormPage';
 import RegisterVerfiyPage from './pages/RegisterVerfiyPage';
-import MyPage from './pages/MyPage';
+// import MyPage from './pages/MyPage';
 import SendPage from './pages/SendPage';
 import SendCompletePage from './pages/SendCompletePage';
 import LetterPage from './pages/LetterPage';
@@ -43,7 +43,7 @@ const routes: RouteObject[] = [
       { path: '/send/complete', element: <SendCompletePage /> },
       {
         path: '/mypage',
-        element: <MyPage />,
+        // element: <MyPage />,
       },
       {
         path: '/letter/:letterId',

@@ -6,7 +6,7 @@ export const cookieKeys = {
 export interface CookieValue extends Record<CookieKey, object> {
   user: {
     discordId: string;
-    nickname: string;
+    nickName: string;
   };
 }
 
