@@ -4,6 +4,7 @@ import FixedFooter from '../components/FixedFooter';
 import styled from 'styled-components';
 import Navigation from '../components/Navigation';
 import { Subtitle1 } from '../components/Typography';
+import ReceivedLetter from '../components/ReceivedLetter';
 
 const LetterPage = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const LetterPage = () => {
         <LetterContainer>
           <Subtitle1 color="gray_0">편지가 도착했어요!</Subtitle1>
         </LetterContainer>
+        <ReceivedLetter />
         <FixedFooter>
           <CTAButton onClick={() => navigate('/send')}>나도 보내기</CTAButton>
         </FixedFooter>
@@ -26,6 +28,7 @@ const LetterPage = () => {
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 const LetterContainer = styled.div`
   display: flex;
