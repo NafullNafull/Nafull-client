@@ -1,20 +1,20 @@
 import { AxiosResponse } from 'axios';
-import { WellWish } from './well-wishes';
+import { Letter } from './letters';
 import client from './client';
 
 // User model
 export interface UserData {
   userId: string;
   discordId: string;
-  receivedWellWishes: WellWish[];
-  sentWellWishes: WellWish[];
+  receivedLetters: Letter[];
+  sentLetters: Letter[];
   totalSpreadCount: number;
   keyCount: number;
 }
 
 // register
 export interface RegisterRequestBody {
-  wellWishId: string;
+  letterId: string;
   rawPassword: string;
   personalInformationAgreement: boolean;
 }
