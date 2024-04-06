@@ -6,10 +6,11 @@ import PlaygroundPage from './pages/PlaygroundPage';
 import RegisterPage from './pages/RegisterPage';
 import RegisterFormPage from './pages/RegisterFormPage';
 import RegisterVerfiyPage from './pages/RegisterVerfiyPage';
-// import MyPage from './pages/MyPage';
 import SendPage from './pages/SendPage';
 import SendCompletePage from './pages/SendCompletePage';
 import LetterPage from './pages/LetterPage';
+import { letterApi } from './api';
+import MyPage from './pages/MyPage';
 
 const routes: RouteObject[] = [
   {
@@ -43,11 +44,14 @@ const routes: RouteObject[] = [
       { path: '/send/complete', element: <SendCompletePage /> },
       {
         path: '/mypage',
-        // element: <MyPage />,
+        element: <MyPage />,
       },
       {
         path: '/letter/:letterId',
         element: <LetterPage />,
+        loader: async ({ params }) => {
+          return letterApi.get(params.letterId!);
+        },
       },
       {
         path: '/playground',
