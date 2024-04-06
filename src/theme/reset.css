@@ -50,3 +50,7 @@ table {
 *, *::before, *::after {
 	box-sizing: border-box;
 }
+
+textarea {
+	font-family: 'PretendardVariable';
+}

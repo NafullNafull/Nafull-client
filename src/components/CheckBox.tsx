@@ -41,6 +41,7 @@ const StyledCheckBox = styled.div`
     height: 26px;
     border: 1px solid ${({ theme }) => theme.color.gray_200};
     border-radius: 8px;
+    background-color: white;
   }
   .checkbox:checked + label::after {
     content: '';
