@@ -40,7 +40,7 @@ const LoginPage: React.FC = () => {
 
       setUserCookie({
         discordId: data.discordId,
-        nickName: data.nickName,
+        nickname: data.nickname,
         userId: data.userId,
       });
 

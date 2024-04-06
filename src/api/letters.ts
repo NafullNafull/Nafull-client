@@ -7,8 +7,9 @@ export interface Letter {
   letterId: string;
   senderId: string;
   receiverDiscordId: string;
-  senderNickname: string;
+  nickname: string;
   content: string;
+  badge: 'flower' | 'clover' | 'letter' | 'key' | 'butterfly';
   locked: boolean;
   createdAt: string;
   nickname: string;
@@ -17,13 +18,17 @@ export interface Letter {
 
 // send letter
 export interface SendRequestBody {
+  senderId: string;
   receiverDiscordId: string;
   senderNickname: string;
   content: string;
+  badge: 'flower' | 'clover' | 'letter' | 'key' | 'butterfly';
 }
 
-export const send = async (body: SendRequestBody): Promise<void> => {
-  const response = await client.post<void, AxiosResponse<void>, SendRequestBody>('/letters/send', body);
+export const send = async (body: SendRequestBody[]): Promise<void> => {
+  const response = await client.post<void, AxiosResponse<void>, { data: SendRequestBody[] }>('/letters/send', {
+    data: body,
+  });
   return response.data;
 };
 
@@ -37,8 +42,8 @@ export const receive = async (body: ReceiveRequestBody): Promise<void> => {
 };
 
 // unlock letter
-export const unlock = async (letterId: string): Promise<void> => {
-  const response = await client.patch<void, AxiosResponse<void>>(`/letters/${letterId}/unlock`);
+export const unlock = async (letterId: string, userId: string): Promise<void> => {
+  const response = await client.patch<void, AxiosResponse<void>>(`/letters/${letterId}/unlock`, { userId });
   return response.data;
 };
 

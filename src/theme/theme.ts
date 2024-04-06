@@ -21,6 +21,8 @@ export const theme = {
 
     orange: '#EC5636',
 
+    yellow: '#EEC229',
+
     blue_100: '#E9F2FC',
     blue_200: '#92BDF2',
     blue_300: '#5493E1',

@@ -14,14 +14,14 @@ import LetterPaper from '../components/LetterPaper';
 import Envelope from '../components/Envelope';
 
 const SendPage = () => {
-  const [isRandomChecked, setIsRandomChecked] = useState(false);
-  const [receiver, setReceiver] = useState('');
-  const [content, setContent] = useState('');
-  const [sender, setSender] = useState('');
   const { user } = useUser();
+  const [isRandomChecked, setIsRandomChecked] = useState(false);
+  const [receiverDiscordId, setReceiverDiscordId] = useState('');
+  const [content, setContent] = useState('');
+  const [senderNickname, setSenderNickname] = useState(user?.nickname || '');
 
   useEffect(() => {
-    setSender(user?.nickName ?? '');
+    setSenderNickname(user?.nickname ?? '');
   }, [user]);
 
   const [isPosting, setIsPosting] = useState(false);
@@ -29,6 +29,7 @@ const SendPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = async () => {
+    if (!user) return;
     if (content.length > 150) {
       window.alert('150자 미만으로 입력해 주세요.');
       return;
@@ -36,10 +37,9 @@ const SendPage = () => {
 
     try {
       setIsPosting(true);
-      //   TODO 랜덤처리
-      await letterApi.send({ receiverDiscordId: receiver, content, senderNickname: sender });
+      await letterApi.send([{ receiverDiscordId, content, senderNickname, badge: 'butterfly', senderId: user.userId }]);
       setIsPosting(false);
-      navigate('/send/complete', { state: { receiver } });
+      navigate('/send/complete', { state: { receiver: receiverDiscordId }, replace: true });
     } catch (e) {
       setIsPosting(false);
       console.error(e);
@@ -47,7 +47,7 @@ const SendPage = () => {
   };
 
   const isInvalidInput = () => {
-    return receiver.length === 0 || content.length === 0 || sender.length === 0;
+    return receiverDiscordId.length === 0 || content.length === 0 || senderNickname.length === 0;
   };
 
   return (
@@ -57,7 +57,6 @@ const SendPage = () => {
         <Title2>따뜻한 마음을 전해보세요 :)</Title2>
 
         <LetterContainer>
-          {/* TODO 영문 타이포 */}
           <LetterPaper>
             <StyledSendForm>
               <ReceiverContainer>
@@ -73,8 +72,8 @@ const SendPage = () => {
                 </Flex>
 
                 <TextField
-                  value={isRandomChecked ? '' : receiver}
-                  onChange={(e) => setReceiver(e.target.value)}
+                  value={isRandomChecked ? '' : receiverDiscordId}
+                  onChange={(e) => setReceiverDiscordId(e.target.value)}
                   placeholder={isRandomChecked ? '랜덤으로 마음이 보내져요.' : '디스코드 아이디를 입력해 주세요.'}
                   disabled={isRandomChecked}
                 />
@@ -88,10 +87,8 @@ const SendPage = () => {
             </StyledSendForm>
           </LetterPaper>
           {/* TODO: badge 정보 넘겨주기 */}
-          <Envelope badge="clover" senderValue={sender} onChange={setSender} />
+          <Envelope badge="clover" senderValue={senderNickname} onChange={setSenderNickname} />
         </LetterContainer>
-
-        {/* TODO 영문 타이포 */}
 
         <FixedFooter>
           <CTAButton disabled={isPosting || isInvalidInput()} onClick={onSubmit}>

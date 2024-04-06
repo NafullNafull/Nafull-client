@@ -7,7 +7,7 @@ export interface CookieValue extends Record<CookieKey, object> {
   user: {
     userId: string;
     discordId: string;
-    nickName: string;
+    nickname: string;
   };
 }
 

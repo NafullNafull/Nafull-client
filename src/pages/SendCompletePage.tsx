@@ -3,10 +3,11 @@ import CTAButton from '../components/CTAButton';
 import FixedFooter from '../components/FixedFooter';
 import styled from 'styled-components';
 import Badge from '../components/Badge';
-import { Subtitle1, Subtitle3 } from '../components/Typography';
+import { Subtitle1 } from '../components/Typography';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useUser from '../utils/useUser';
 import { userApi } from '../api';
+import WingInfo from '../components/WingInfo';
 
 const SendCompletePage = () => {
   const navigate = useNavigate();
@@ -23,15 +24,17 @@ const SendCompletePage = () => {
   }
 
   useEffect(() => {
-    userApi
-      .get(user!.discordId)
-      .then((res) => setKeyCount(res.keyCount))
-      .catch((err) => console.error(err));
-  }, []);
+    if (user) {
+      userApi
+        .get(user.discordId)
+        .then((res) => setKeyCount(res.wingCount))
+        .catch((err) => console.error(err));
+    }
+  }, [user]);
 
   return (
     <Container>
-      <Subtitle3>보유한 날갯짓 | {keyCount}회</Subtitle3>
+      <WingInfo keyCount={keyCount} />
 
       <Wrapper>
         <Subtitle1
