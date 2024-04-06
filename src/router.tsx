@@ -6,6 +6,7 @@ import PlaygroundPage from './pages/PlaygroundPage';
 import RegisterPage from './pages/RegisterPage';
 import RegisterFormPage from './pages/RegisterFormPage';
 import RegisterVerfiyPage from './pages/RegisterVerfiyPage';
+import MyPage from './pages/MyPage';
 
 const routes: RouteObject[] = [
   {
@@ -31,6 +32,10 @@ const routes: RouteObject[] = [
       {
         path: '/login',
         element: <LoginPage />,
+      },
+      {
+        path: '/mypage',
+        element: <MyPage />,
       },
       {
         path: '/playground',
