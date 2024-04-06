@@ -7,6 +7,7 @@ import CTAButton from '../components/CTAButton';
 import { Subtitle1 } from '../components/Typography';
 import { userApi } from '../api';
 import { useParams } from 'react-router-dom';
+import Navigation from '../components/Navigation';
 
 const RegisterFormPage: React.FC = () => {
   const { letterId } = useParams<{ letterId: string }>() as { letterId: string };
@@ -48,8 +49,23 @@ const RegisterFormPage: React.FC = () => {
     }
     return { isValid: true };
   };
+
+  const passwordValidator = (value: string): ValidationResult => {
+    if (value.length < 8 || value.length > 16) {
+      return { isValid: false, error: '8 ~ 16자리로 입력해주세요.' };
+    }
+    return { isValid: true };
+  };
+
+  const isValid =
+    !loading &&
+    requiredValidator(input.nickname).isValid &&
+    passwordValidator(input.password).isValid &&
+    confirmValidator(input.confirmPassword).isValid;
+
   return (
     <div>
+      <Navigation />
       <StyledTitleWrapper>
         <Subtitle1>
           마음 편지를 더 보려면
@@ -72,7 +88,7 @@ const RegisterFormPage: React.FC = () => {
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요"
           description="8 ~ 16자리로 입력해주세요"
-          validator={requiredValidator}
+          validator={passwordValidator}
         />
         <TextField
           value={input.confirmPassword}
@@ -85,10 +101,7 @@ const RegisterFormPage: React.FC = () => {
         />
       </StyledRegisterForm>
       <FixedFooter>
-        <CTAButton
-          disabled={Object.values(input).some((v) => !v) || loading || input.confirmPassword !== input.password}
-          onClick={handleSubmit}
-        >
+        <CTAButton disabled={!isValid} onClick={handleSubmit}>
           가입 완료
         </CTAButton>
       </FixedFooter>

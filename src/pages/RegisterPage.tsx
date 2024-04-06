@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import FixedFooter from '../components/FixedFooter';
 import CTAButton from '../components/CTAButton';
 import { wellWishApi } from '../api';
+import Navigation from '../components/Navigation';
 
 const RegisterPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ const RegisterPage: React.FC = () => {
   };
   return (
     <div>
+      <Navigation />
       <StyledRegisterForm>
         <TextField
           value={input}

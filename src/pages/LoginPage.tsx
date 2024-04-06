@@ -5,6 +5,7 @@ import CTAButton from '../components/CTAButton';
 import requiredValidator from '../utils/requiredValidator';
 import { userApi } from '../api';
 import FixedFooter from '../components/FixedFooter';
+import Navigation from '../components/Navigation';
 
 const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -40,6 +41,7 @@ const LoginPage: React.FC = () => {
   };
   return (
     <div>
+      <Navigation />
       <StyledLoginForm>
         <TextField
           value={input.discordId}
@@ -72,6 +74,7 @@ const StyledLoginForm = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+  margin-top: 240px;
 `;
 
 export default LoginPage;
