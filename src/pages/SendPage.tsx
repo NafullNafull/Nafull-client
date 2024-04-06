@@ -12,16 +12,24 @@ import TextArea from '../components/TextArea';
 import useUser from '../utils/useUser';
 import LetterPaper from '../components/LetterPaper';
 import Envelope from '../components/Envelope';
+import { BadgeType, badges } from '../assets/badges';
 
 const SendPage = () => {
   const { user } = useUser();
   const [isRandomChecked, setIsRandomChecked] = useState(false);
   const [receiverDiscordId, setReceiverDiscordId] = useState('');
   const [content, setContent] = useState('');
-  const [senderNickname, setSenderNickname] = useState(user?.nickname || '');
+  const [sender, setSender] = useState('');
+  const [badge, setBadge] = useState<BadgeType>();
 
   useEffect(() => {
-    setSenderNickname(user?.nickname ?? '');
+    const badgeKeys = Object.keys(badges);
+    const randomBadge = badgeKeys[Math.floor(Math.random() * badgeKeys.length)] as BadgeType;
+    setBadge(randomBadge);
+  }, []);
+
+  useEffect(() => {
+    setSender(user?.nickname ?? '');
   }, [user]);
 
   const [isPosting, setIsPosting] = useState(false);
@@ -29,17 +37,25 @@ const SendPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = async () => {
-    if (!user) return;
-    if (content.length > 150) {
-      window.alert('150자 미만으로 입력해 주세요.');
-      return;
+    if (!badge || !user) {
+      window.alert('로그인이 필요합니다.');
+      return navigate('/login');
     }
 
     try {
       setIsPosting(true);
-      await letterApi.send([{ receiverDiscordId, content, senderNickname, badge: 'butterfly', senderId: user.userId }]);
+      //   TODO 랜덤처리
+      await letterApi.send([
+        {
+          senderId: user.userId,
+          badge,
+          receiverDiscordId,
+          content,
+          senderNickname: sender,
+        },
+      ]);
       setIsPosting(false);
-      navigate('/send/complete', { state: { receiver: receiverDiscordId }, replace: true });
+      navigate('/send/complete', { state: { receiver: receiverDiscordId, badge } });
     } catch (e) {
       setIsPosting(false);
       console.error(e);
@@ -47,7 +63,7 @@ const SendPage = () => {
   };
 
   const isInvalidInput = () => {
-    return receiverDiscordId.length === 0 || content.length === 0 || senderNickname.length === 0;
+    return receiverDiscordId.length === 0 || content.length === 0 || sender.length === 0;
   };
 
   return (
@@ -87,7 +103,7 @@ const SendPage = () => {
             </StyledSendForm>
           </LetterPaper>
           {/* TODO: badge 정보 넘겨주기 */}
-          <Envelope badge="clover" senderValue={senderNickname} onChange={setSenderNickname} />
+          <Envelope badge="clover" senderValue={sender} onChange={setSender} />
         </LetterContainer>
 
         <FixedFooter>

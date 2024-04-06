@@ -7,9 +7,7 @@ export interface Letter {
   letterId: string;
   senderId: string;
   receiverDiscordId: string;
-  nickname: string;
   content: string;
-  badge: 'flower' | 'clover' | 'letter' | 'key' | 'butterfly';
   locked: boolean;
   createdAt: string;
   nickname: string;
@@ -22,7 +20,7 @@ export interface SendRequestBody {
   receiverDiscordId: string;
   senderNickname: string;
   content: string;
-  badge: 'flower' | 'clover' | 'letter' | 'key' | 'butterfly';
+  badge: BadgeType;
 }
 
 export const send = async (body: SendRequestBody[]): Promise<void> => {

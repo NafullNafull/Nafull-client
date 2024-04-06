@@ -40,7 +40,7 @@ const SendCompletePage = () => {
         <Subtitle1
           style={{ textAlign: 'center', whiteSpace: 'pre-wrap' }}
         >{`소중한 마음을 전달했어요\n앞으로 어떤 나비효과가 일어날까요?`}</Subtitle1>
-        <Badge variant="letter" size={200} />
+        <Badge variant={location.state.badge ?? 'letter'} size={200} />
         <RecieverWrapper>
           <Subtitle1 sansita color="gray_300">
             To.

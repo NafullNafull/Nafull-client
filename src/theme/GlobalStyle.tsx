@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: "PretendardVariable", "OmyuPretty" "Arial", sans-serif;
     color: ${({ theme }) => theme.color.gray_900};
     line-height: 1.5;
+    background-color: #51483A;
   }
   *:focus-visible {
     outline: none;

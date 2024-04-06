@@ -9,6 +9,7 @@ import Navigation from '../components/Navigation';
 import MainLogo from '../components/Logo';
 import useUser from '../utils/useUser';
 import { useNavigate } from 'react-router-dom';
+import { Body1 } from '../components/Typography';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -76,6 +77,11 @@ const LoginPage: React.FC = () => {
           errorMessage={failMessage}
         />
       </StyledLoginForm>
+      <LoginTextButton>
+        <Body1 color="gray_400" onClick={() => navigate('/register')}>
+          회원이 아니신가요?
+        </Body1>
+      </LoginTextButton>
       <FixedFooter>
         <CTAButton disabled={loading || Object.values(input).some((value) => !value)} onClick={handleSubmit}>
           로그인
@@ -90,6 +96,16 @@ const StyledLoginForm = styled.div`
   flex-direction: column;
   row-gap: 24px;
   margin-top: 240px;
+`;
+
+const LoginTextButton = styled.div`
+  margin-top: 16px;
+  text-align: center;
+
+  p {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
 
 export default LoginPage;

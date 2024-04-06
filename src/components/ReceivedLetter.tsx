@@ -13,7 +13,7 @@ const ReceivedLetter: React.FC<ReceivedLetterProps> = ({ letter }) => {
         <Subtitle1 sansita color="gray_200">
           From.
         </Subtitle1>
-        <Subtitle1>{letter?.senderNickname}</Subtitle1>
+        <Subtitle1>{letter?.nickname}</Subtitle1>
       </SenderContainer>
       <ContentContainer>
         <ImageLetterPaper />

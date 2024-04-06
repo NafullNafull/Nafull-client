@@ -88,8 +88,7 @@ const StyledTextArea = styled.div`
   textarea {
     width: 100%;
     height: 187px;
-    padding: 12px;
-    ${styles.Body2};
+    ${styles.Letter};
     border: none;
     resize: none;
 
