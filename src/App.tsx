@@ -1,5 +1,4 @@
-import React, { PropsWithChildren } from 'react';
-import logo from './logo.svg';
+import { PropsWithChildren } from 'react';
 import './App.css';
 
 function App({ children }: PropsWithChildren) {
