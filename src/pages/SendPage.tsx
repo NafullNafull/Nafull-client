@@ -73,7 +73,7 @@ const SendPage = () => {
   };
 
   const isInvalidInput = () => {
-    return receiverDiscordId.length === 0 || content.length === 0 || sender.length === 0;
+    return (!isRandomChecked && receiverDiscordId.length === 0) || content.length === 0 || sender.length === 0;
   };
 
   return (
