@@ -9,6 +9,7 @@ import RegisterVerfiyPage from './pages/RegisterVerfiyPage';
 import MyPage from './pages/MyPage';
 import SendPage from './pages/SendPage';
 import SendCompletePage from './pages/SendCompletePage';
+import LetterPage from './pages/LetterPage';
 
 const routes: RouteObject[] = [
   {
@@ -43,6 +44,10 @@ const routes: RouteObject[] = [
       {
         path: '/mypage',
         element: <MyPage />,
+      },
+      {
+        path: '/letter/:letterId',
+        element: <LetterPage />,
       },
       {
         path: '/playground',
