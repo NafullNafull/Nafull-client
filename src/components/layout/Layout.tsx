@@ -9,7 +9,9 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
-  padding: ${({ theme }) => `0 ${theme.layout.paddingX}px`};
+  padding: ${({ theme }) => `0 ${theme.layout.paddingX}px ${theme.layout.paddingY}px`};
+  overflow: hidden;
+  min-height: 100vh;
 `;
 
 export default {

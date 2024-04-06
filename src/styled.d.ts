@@ -5,6 +5,7 @@ declare module 'styled-components' {
     layout: {
       width: number;
       paddingX: number;
+      paddingY: number;
     };
     color: {
       gray_0: string;

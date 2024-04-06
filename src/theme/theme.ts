@@ -1,6 +1,7 @@
 export const theme = {
   layout: {
     width: 375,
+    paddingY: 30,
     paddingX: 30,
   },
   color: {

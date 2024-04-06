@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Body3, Subtitle2 } from './Typography';
 import styles from './Typography/styles';
-import { useState } from 'react';
+import { InputHTMLAttributes, useState } from 'react';
 
 type ValidStatus = {
   isValid: true;
@@ -11,7 +11,7 @@ type InvalidStatus = {
   error: string;
 };
 export type ValidationResult = ValidStatus | InvalidStatus;
-interface TextFieldProps {
+interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,6 +20,7 @@ interface TextFieldProps {
   placeholder?: string;
   description?: string;
   disabled?: boolean;
+  errorMessage?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -31,6 +32,8 @@ const TextField: React.FC<TextFieldProps> = ({
   placeholder,
   description,
   disabled,
+  errorMessage,
+  ...inputProps
 }) => {
   const [validStatus, setValidStatus] = useState<ValidStatus | InvalidStatus>({ isValid: true });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,9 +55,18 @@ const TextField: React.FC<TextFieldProps> = ({
           {label}
         </Subtitle2>
       )}
-      <input name={name} value={value} onChange={handleChange} placeholder={placeholder} disabled={disabled} />
+      <input
+        name={name}
+        value={value}
+        onChange={handleChange}
+        placeholder={placeholder}
+        disabled={disabled}
+        {...inputProps}
+      />
       {description && validStatus.isValid && <Description color="gray_500">{description}</Description>}
-      {!validStatus.isValid && <Description color="red_300">{validStatus.error}</Description>}
+      {(!validStatus.isValid || errorMessage) && (
+        <Description color="red_300">{!validStatus.isValid ? validStatus.error : errorMessage}</Description>
+      )}
     </StyledTextField>
   );
 };

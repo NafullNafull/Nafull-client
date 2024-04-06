@@ -1,8 +1,10 @@
 import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
 import App from './App';
 import PlaygroundPage from './pages/PlaygroundPage';
+import RegisterPage from './pages/RegisterPage';
+import RegisterFormPage from './pages/RegisterFormPage';
 
 const routes: RouteObject[] = [
   {
@@ -14,8 +16,16 @@ const routes: RouteObject[] = [
         element: <HomePage />,
       },
       {
-        path: '/signup',
-        element: <SignupPage />,
+        path: '/register',
+        element: <RegisterPage />,
+      },
+      {
+        path: '/register/:letterId',
+        element: <RegisterFormPage />,
+      },
+      {
+        path: '/login',
+        element: <LoginPage />,
       },
       {
         path: '/playground',

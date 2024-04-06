@@ -7,17 +7,17 @@ const Title1 = css`
 `;
 const Title2 = css`
   font-size: 24px;
-  font-weight: semi-bold;
+  font-weight: 600;
   line-height: 1.4;
 `;
 const Subtitle1 = css`
   font-size: 20px;
-  font-weight: semi-bold;
+  font-weight: 600;
   line-height: 1.4;
 `;
 const Subtitle2 = css`
   font-size: 16px;
-  font-weight: semi-bold;
+  font-weight: 600;
   line-height: 1.4;
 `;
 const Subtitle3 = css`
@@ -27,7 +27,7 @@ const Subtitle3 = css`
 `;
 const Body1 = css`
   font-size: 14px;
-  font-weight: semi-bold;
+  font-weight: 600;
   line-height: 1.4;
 `;
 const Body2 = css`
