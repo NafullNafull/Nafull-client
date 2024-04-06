@@ -5,6 +5,7 @@ import client from './client';
 // User model
 export interface UserData {
   userId: string;
+  nickname: string;
   discordId: string;
   receivedLetters: Letter[];
   sentLetters: Letter[];
