@@ -12,8 +12,9 @@ type InvalidStatus = {
 };
 export type ValidationResult = ValidStatus | InvalidStatus;
 interface TextFieldProps {
+  name?: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   validator?: (value: string) => ValidationResult;
   label?: string;
   placeholder?: string;
@@ -22,6 +23,7 @@ interface TextFieldProps {
 }
 
 const TextField: React.FC<TextFieldProps> = ({
+  name,
   value,
   onChange,
   validator,
@@ -35,12 +37,14 @@ const TextField: React.FC<TextFieldProps> = ({
     const value = e.target.value;
     const status = validator?.(value) || { isValid: true };
     setValidStatus(status);
-    onChange(value);
+    onChange(e);
   };
   return (
     <StyledTextField>
       {label && (
         <Subtitle2
+          element={'label'}
+          htmlFor={name}
           style={{
             marginBottom: 12,
           }}
@@ -48,7 +52,7 @@ const TextField: React.FC<TextFieldProps> = ({
           {label}
         </Subtitle2>
       )}
-      <input value={value} onChange={handleChange} placeholder={placeholder} disabled={disabled} />
+      <input name={name} value={value} onChange={handleChange} placeholder={placeholder} disabled={disabled} />
       {description && validStatus.isValid && <Description color="gray_500">{description}</Description>}
       {!validStatus.isValid && <Description color="red_300">{validStatus.error}</Description>}
     </StyledTextField>

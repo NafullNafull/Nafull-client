@@ -26,6 +26,11 @@ const GlobalStyle = createGlobalStyle`
   *:focus-visible {
     outline: none;
   }
+
+  input {
+    appearance: none;
+    margin: 0;
+  }
 `;
 
 export type FontFamilyVariants = 'PretendardVariable' | 'SansitaOne';
