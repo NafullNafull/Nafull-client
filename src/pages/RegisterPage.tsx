@@ -4,9 +4,9 @@ import requiredValidator from '../utils/requiredValidator';
 import styled from 'styled-components';
 import FixedFooter from '../components/FixedFooter';
 import CTAButton from '../components/CTAButton';
-import { wellWishApi } from '../api';
 import Navigation from '../components/Navigation';
 import { useNavigate } from 'react-router-dom';
+import { letterApi } from '../api';
 
 const RegisterPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const RegisterPage: React.FC = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      await wellWishApi.receive({
+      await letterApi.receive({
         discordId: input,
       });
       navigate('/register/verify');

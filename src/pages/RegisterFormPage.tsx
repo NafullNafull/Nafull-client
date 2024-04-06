@@ -33,7 +33,7 @@ const RegisterFormPage: React.FC = () => {
       await userApi.register({
         rawPassword: input.password,
         personalInformationAgreement: true,
-        wellWishId: letterId,
+        letterId: letterId,
       });
     } catch (e) {
       console.error(e);

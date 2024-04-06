@@ -1,4 +1,4 @@
-import * as wellWishApi from './well-wishes';
+import * as letterApi from './letters';
 import * as userApi from './users';
 
-export { wellWishApi, userApi };
+export { letterApi, userApi };
