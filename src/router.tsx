@@ -3,6 +3,8 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import App from './App';
 import PlaygroundPage from './pages/PlaygroundPage';
+import RegisterPage from './pages/RegisterPage';
+import RegisterFormPage from './pages/RegisterFormPage';
 
 const routes: RouteObject[] = [
   {
@@ -12,6 +14,14 @@ const routes: RouteObject[] = [
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: '/register',
+        element: <RegisterPage />,
+      },
+      {
+        path: '/register/:letterId',
+        element: <RegisterFormPage />,
       },
       {
         path: '/login',
