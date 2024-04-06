@@ -44,14 +44,14 @@ const HomePage: React.FC = () => {
           <Subtitle2 color="gray_400">함께한 사람들</Subtitle2>
           <Title3>
             {/* TODO */}
-            <span>{stat?.totalUserCount || '??'}</span>명
+            <span>{stat?.totalUserCount ?? '??'}</span>명
           </Title3>
         </div>
         <div>
           <Subtitle2 color="gray_400">전파된 나비효과</Subtitle2>
           <Title3>
             {/* TODO */}
-            <span>{stat?.totalButterflyEffectCount || '??'}</span>회
+            <span>{stat?.totalButterflyEffectCount ?? '??'}</span>회
           </Title3>
         </div>
       </StatContainer>

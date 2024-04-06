@@ -14,11 +14,11 @@ const RegisterFormPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [input, setInput] = useState<{
-    nickName: string;
+    nickname: string;
     password: string;
     confirmPassword: string;
   }>({
-    nickName: '',
+    nickname: '',
     password: '',
     confirmPassword: '',
   });
@@ -61,7 +61,7 @@ const RegisterFormPage: React.FC = () => {
 
   const isValid =
     !loading &&
-    requiredValidator(input.nickName).isValid &&
+    requiredValidator(input.nickname).isValid &&
     passwordValidator(input.password).isValid &&
     confirmValidator(input.confirmPassword).isValid;
 
@@ -77,8 +77,8 @@ const RegisterFormPage: React.FC = () => {
       </StyledTitleWrapper>
       <StyledRegisterForm>
         <TextField
-          value={input.nickName}
-          onChange={handleInputChange('nickName')}
+          value={input.nickname}
+          onChange={handleInputChange('nickname')}
           validator={requiredValidator}
           label="닉네임"
           placeholder="기본 닉네임을 설정해주세요"

@@ -17,7 +17,7 @@ const Navigation = ({ keyCount }: Props) => {
   return (
     <StyledNav>
       <StyledIcon icon="leftChevron" color="gray_900" width={20} height={30} onClick={goPreviousPage} />
-      {keyCount && <WingInfo keyCount={keyCount || 0} />}
+      {keyCount !== undefined && <WingInfo keyCount={keyCount} />}
     </StyledNav>
   );
 };
