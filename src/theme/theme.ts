@@ -1,4 +1,8 @@
 export const theme = {
+  layout: {
+    width: 375,
+    paddingX: 30,
+  },
   color: {
     gray_0: '#FFFFFF',
     gray_50: '#F5F5F5',
