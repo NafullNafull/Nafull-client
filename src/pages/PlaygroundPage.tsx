@@ -17,7 +17,7 @@ const PlaygroundPage: React.FC = () => {
       <Body1>Body 1</Body1>
       <TextField
         value={input}
-        onChange={setInput}
+        onChange={(e) => setInput(e.target.value)}
         validator={inputValidator}
         label="디스코드 아이디를 입력하세요"
         description="description"
