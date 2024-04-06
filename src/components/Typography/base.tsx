@@ -19,7 +19,7 @@ export function withTypographyBase(element: string, variant: TypographyVariant) 
     return (
       <StyledTypography
         as={element}
-        fontFamily={sansita ? 'SansitaOne' : 'PretendardVariable'}
+        fontFamily={sansita ? 'SansitaOne' : undefined}
         variant={variant}
         style={{ color: color ? colors[color] : undefined, ...style }}
         {...props}
@@ -31,7 +31,7 @@ export function withTypographyBase(element: string, variant: TypographyVariant) 
   return Typography;
 }
 
-const StyledTypography = styled.p<{ variant: TypographyVariant; fontFamily: FontFamilyVariants }>`
+const StyledTypography = styled.p<{ variant: TypographyVariant; fontFamily?: FontFamilyVariants }>`
   ${({ variant }) => styles[variant]}
-  ${({ fontFamily }) => `font-family: ${fontFamily}`};
+  ${({ fontFamily }) => fontFamily && `font-family: ${fontFamily}`};
 `;

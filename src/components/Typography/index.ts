@@ -9,3 +9,4 @@ export const Subtitle3 = withTypographyBase('h4', 'Subtitle3');
 export const Body1 = withTypographyBase('p', 'Body1');
 export const Body2 = withTypographyBase('p', 'Body2');
 export const Body3 = withTypographyBase('p', 'Body3');
+export const BodyLetter = withTypographyBase('p', 'Letter');

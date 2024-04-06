@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import client from './client';
+import { BadgeType } from '../assets/badges';
 
 // Letter model
 export interface Letter {
@@ -9,6 +10,9 @@ export interface Letter {
   senderNickname: string;
   content: string;
   locked: boolean;
+  createdAt: string;
+  nickname: string;
+  badge: BadgeType;
 }
 
 // send letter
