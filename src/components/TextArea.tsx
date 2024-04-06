@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Body3, Subtitle2 } from './Typography';
+import { Body2, Body3, Subtitle2 } from './Typography';
 import styles from './Typography/styles';
 import { InputHTMLAttributes, useState } from 'react';
 import { ValidationResult } from './TextField';
@@ -63,6 +63,11 @@ const TextArea: React.FC<TextAreaProps> = ({
         disabled={disabled}
         {...inputProps}
       />
+      <Counter>
+        <Body2 color="gray_400">
+          {value.length} / {inputProps.maxLength}
+        </Body2>
+      </Counter>
       {description && validStatus.isValid && <Description color="gray_500">{description}</Description>}
       {(!validStatus.isValid || errorMessage) && (
         <Description color="red_300">{!validStatus.isValid ? validStatus.error : errorMessage}</Description>
@@ -71,17 +76,21 @@ const TextArea: React.FC<TextAreaProps> = ({
   );
 };
 
+const Counter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 18px;
+`;
 const Description = styled(Body3)`
   margin-top: 8px;
 `;
 const StyledTextArea = styled.div`
   textarea {
     width: 100%;
-    height: 200px;
+    height: 187px;
     padding: 12px;
     ${styles.Body2};
-    border: 1px solid ${({ theme }) => theme.color.gray_200};
-    border-radius: 8px;
+    border: none;
     resize: none;
 
     &::placeholder {

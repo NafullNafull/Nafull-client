@@ -35,3 +35,5 @@ export const badges = {
     unLocked: Letter,
   },
 };
+
+export type BadgeType = keyof typeof badges;
