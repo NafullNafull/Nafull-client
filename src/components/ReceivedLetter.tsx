@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Letter } from '../api/letters';
 import { BodyLetter, Subtitle1 } from './Typography';
+import { Fragment } from 'react/jsx-runtime';
 
 interface ReceivedLetterProps {
   letter?: Letter;
@@ -23,7 +24,14 @@ const ReceivedLetter: React.FC<ReceivedLetterProps> = ({ letter }) => {
             top: 0,
           }}
         >
-          {letter?.content || 'loading...'}
+          {(letter?.content || 'loading...').split('\n').map((line, index, arr) => {
+            if (index === arr.length - 1) return line;
+            return (
+              <Fragment key={index}>
+                {line} <br />
+              </Fragment>
+            );
+          })}
         </BodyLetter>
       </ContentContainer>
       <DateContainer>

@@ -102,8 +102,7 @@ const SendPage = () => {
               />
             </StyledSendForm>
           </LetterPaper>
-          {/* TODO: badge 정보 넘겨주기 */}
-          <Envelope badge="clover" senderValue={sender} onChange={setSender} />
+          <Envelope badge={badge || 'letter'} senderValue={sender} onChange={setSender} />
         </LetterContainer>
 
         <FixedFooter>
