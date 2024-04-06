@@ -19,6 +19,7 @@ function App() {
           setUserCookie({
             discordId: data.discordId,
             nickName: data.nickName,
+            userId: data.userId,
           });
         })
         .catch(() => {

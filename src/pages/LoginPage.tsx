@@ -41,6 +41,7 @@ const LoginPage: React.FC = () => {
       setUserCookie({
         discordId: data.discordId,
         nickName: data.nickName,
+        userId: data.userId,
       });
 
       navigate('/');
