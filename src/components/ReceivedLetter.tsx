@@ -36,7 +36,7 @@ const ReceivedLetter: React.FC<ReceivedLetterProps> = ({ letter }) => {
       </ContentContainer>
       <DateContainer>
         <BodyLetter style={{ fontSize: 16 }} color="gray_400">
-          {letter ? new Date(letter.createdAt).toLocaleDateString() : new Date().toLocaleDateString()}
+          {new Date().toLocaleDateString()}
         </BodyLetter>
       </DateContainer>
     </StyledLetter>

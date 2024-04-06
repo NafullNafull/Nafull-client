@@ -8,8 +8,9 @@ const StyledContainer = styled.div`
   background-color: ${({ theme }) => theme.color.cream};
 `;
 
+export const CONTAINER_ID = 'layout-container';
 const Container = ({ children }: { children: React.ReactNode }) => {
-  return <StyledContainer id="layout-container">{children}</StyledContainer>;
+  return <StyledContainer id={CONTAINER_ID}>{children}</StyledContainer>;
 };
 
 const Main = styled.main`
