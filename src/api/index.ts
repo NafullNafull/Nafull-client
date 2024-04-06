@@ -1,9 +1,4 @@
-import client from './client';
+import * as wellWishApi from './well-wishes';
+import * as userApi from './users';
 
-export const signin = (data: any) => {
-  return client.post('/signin', data);
-};
-
-export default {
-  signin,
-};
+export { wellWishApi, userApi };
