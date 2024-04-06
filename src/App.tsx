@@ -1,12 +1,15 @@
-import { PropsWithChildren } from 'react';
 import GlobalStyle from './theme/GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme/theme';
+import { Outlet } from 'react-router-dom';
 
-function App({ children }: PropsWithChildren) {
+function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      {/* TODO: Global style */}
-      {children}
+      <ThemeProvider theme={theme}>
+        <Outlet />
+      </ThemeProvider>
     </div>
   );
 }
