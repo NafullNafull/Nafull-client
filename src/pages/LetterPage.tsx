@@ -12,10 +12,10 @@ import { CONTAINER_ID } from '../components/layout/Layout';
 import { BadgeType } from '../assets/badges';
 
 const colorMap = {
-  flower: '#EEC229',
-  butterfly: '#5493E1',
+  flower: '#5493E1',
+  butterfly: '#EC5636',
   clover: '#00A850',
-  key: '#EC5636',
+  key: '#EEC229',
   letter: '#F1304A',
 };
 const imageMap = {
