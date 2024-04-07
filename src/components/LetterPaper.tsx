@@ -18,6 +18,7 @@ const ImageLetterPaper = styled.div`
   height: 252px;
   position: absolute;
   top: 157px;
+  pointer-events: none;
 `;
 
 const StyledLetter = styled.div`

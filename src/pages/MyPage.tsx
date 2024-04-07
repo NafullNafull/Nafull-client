@@ -66,8 +66,12 @@ const MyPage = () => {
           <FlexContainer
             key={letter.letterId}
             onClick={() => {
-              onOpenModal();
-              setClickedLetter(letter);
+              if (letter.locked) {
+                onOpenModal();
+                setClickedLetter(letter);
+              } else {
+                navigate(`/letter/${letter.letterId}`);
+              }
             }}
           >
             <Badge variant={'key'} size={94} isLocked={letter.locked} />
