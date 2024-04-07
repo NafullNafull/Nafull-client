@@ -74,7 +74,7 @@ const MyPage = () => {
               }
             }}
           >
-            <Badge variant={'key'} size={94} isLocked={letter.locked} />
+            <Badge variant={letter.badge} size={94} isLocked={letter.locked} />
             <Body2 sansita color="gray_300">
               From.
             </Body2>
