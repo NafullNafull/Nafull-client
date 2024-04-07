@@ -18,8 +18,6 @@ const SendCompletePage = () => {
 
   const { receiverId, badge } = location.state;
 
-  const [receiverNickname, setReceiverNickname] = useState('');
-
   if (!receiverId) {
     navigate('/mypage');
     return;
@@ -34,13 +32,6 @@ const SendCompletePage = () => {
     }
   }, [user]);
 
-  useEffect(() => {
-    userApi
-      .get(receiverId)
-      .then((res) => setReceiverNickname(res.nickname))
-      .catch((err) => console.error(err));
-  }, []);
-
   return (
     <Container>
       <WingInfo keyCount={keyCount} />
@@ -54,7 +45,7 @@ const SendCompletePage = () => {
           <Subtitle1 sansita color="gray_300">
             To.
           </Subtitle1>
-          <Subtitle1>{receiverNickname}</Subtitle1>
+          <Subtitle1>{receiverId}</Subtitle1>
         </RecieverWrapper>
       </Wrapper>
 
