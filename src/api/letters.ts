@@ -23,8 +23,23 @@ export interface SendRequestBody {
   badge: BadgeType;
 }
 
-export const send = async (body: SendRequestBody[]): Promise<void> => {
-  const response = await client.post<void, AxiosResponse<void>, { data: SendRequestBody[] }>('/letters/send', {
+export interface SendResponse {
+  data: [
+    {
+      letterId: string;
+      senderId: string;
+      receiverDiscordId: string;
+      nickname: string;
+      content: string;
+      badge: BadgeType;
+      locked: boolean;
+      createAt: string;
+    },
+  ];
+}
+
+export const send = async (body: SendRequestBody[]): Promise<SendResponse> => {
+  const response = await client.post<void, AxiosResponse<SendResponse>, { data: SendRequestBody[] }>('/letters/send', {
     data: body,
   });
   return response.data;
@@ -38,8 +53,8 @@ export interface SendRandomRequestBody {
   badge: BadgeType;
 }
 
-export const sendRandom = async (body: SendRandomRequestBody[]) => {
-  const response = await client.post<void, AxiosResponse<void>, { data: SendRandomRequestBody[] }>(
+export const sendRandom = async (body: SendRandomRequestBody[]): Promise<SendResponse> => {
+  const response = await client.post<void, AxiosResponse<SendResponse>, { data: SendRandomRequestBody[] }>(
     '/letters/send/random',
     { data: body }
   );

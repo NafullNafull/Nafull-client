@@ -16,9 +16,11 @@ const SendCompletePage = () => {
 
   const [keyCount, setKeyCount] = useState(0);
 
-  const receiver = location.state.receiver;
+  const { receiverId, badge } = location.state;
 
-  if (!receiver) {
+  const [receiverNickname, setReceiverNickname] = useState('');
+
+  if (!receiverId) {
     navigate('/mypage');
     return;
   }
@@ -32,6 +34,13 @@ const SendCompletePage = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    userApi
+      .get(receiverId)
+      .then((res) => setReceiverNickname(res.nickname))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <Container>
       <WingInfo keyCount={keyCount} />
@@ -40,12 +49,12 @@ const SendCompletePage = () => {
         <Subtitle1
           style={{ textAlign: 'center', whiteSpace: 'pre-wrap' }}
         >{`소중한 마음을 전달했어요\n앞으로 어떤 나비효과가 일어날까요?`}</Subtitle1>
-        <Badge variant={location.state.badge ?? 'letter'} size={200} />
+        <Badge variant={badge ?? 'letter'} size={200} />
         <RecieverWrapper>
           <Subtitle1 sansita color="gray_300">
             To.
           </Subtitle1>
-          <Subtitle1>{receiver}</Subtitle1>
+          <Subtitle1>{receiverNickname}</Subtitle1>
         </RecieverWrapper>
       </Wrapper>
 

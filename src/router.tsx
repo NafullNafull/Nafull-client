@@ -41,7 +41,10 @@ const routes: RouteObject[] = [
         path: '/send',
         element: <SendPage />,
       },
-      { path: '/send/complete', element: <SendCompletePage /> },
+      {
+        path: '/send/complete',
+        element: <SendCompletePage />,
+      },
       {
         path: '/mypage',
         element: <MyPage />,

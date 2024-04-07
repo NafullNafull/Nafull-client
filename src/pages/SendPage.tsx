@@ -44,8 +44,9 @@ const SendPage = () => {
 
     try {
       setIsPosting(true);
+      let receiverId = receiverDiscordId;
       if (isRandomChecked) {
-        await letterApi.sendRandom([
+        const { data } = await letterApi.sendRandom([
           {
             senderId: user.userId,
             senderNickname: sender,
@@ -53,6 +54,7 @@ const SendPage = () => {
             badge,
           },
         ]);
+        receiverId = data[0].receiverDiscordId;
       } else {
         await letterApi.send([
           {
@@ -65,7 +67,7 @@ const SendPage = () => {
         ]);
       }
       setIsPosting(false);
-      navigate('/send/complete', { state: { receiver: receiverDiscordId, badge } });
+      navigate('/send/complete', { state: { receiverId: receiverId, badge } });
     } catch (e) {
       setIsPosting(false);
       console.error(e);
