@@ -102,7 +102,7 @@ const MyPage = () => {
           <StyledModal>
             <Subtitle1>이 마음편지를 열어볼까요?</Subtitle1>
             <Subtitle3 color="gray_400">날갯짓 2회가 사용돼요</Subtitle3>
-            <Badge variant="key" size={110} />
+            <Badge variant={clickedLetter?.badge || 'key'} size={110} />
             <StyledDiv>
               <Subtitle1 sansita color="gray_300">
                 From.
